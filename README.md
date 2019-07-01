@@ -1,0 +1,2 @@
+This project was made following the instructions of [The Odin Project's curriculum](https://www.theodinproject.com/courses/web-development-101/lessons/calculator).
+I'm using HTML, CSS and JavaScript for this.
