@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik|Viga&display=swap');
+
+* {
+    font-family: 'Rubik', sans-serif;
+}
+
+body {
+    width: 98vw;
+    height: 98vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.title {
+    font-size: 42px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 50px;
+    color: #2E64FE;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#calculator {
+    width: 350px;
+    height: 500px;
+    border: 1px solid black;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    height: 40px;
+    width: 23%;
+    border-radius: 5px;
+    border: none;
+    color: #2E64FE;
+    background: #ECECEC;
+    font-size: 16px;
+    align-items: center;
+}
+
+button:hover {
+    border: 1px solid #6E6E6E;
+    box-shadow: 2px 3px 5px #6E6E6E;
+}
+
+#display {
+    font-family: 'Rubik', sans-serif;
+    flex-basis: 100%;
+    height: 100px;
+    padding: 25px 10px;
+    border-bottom: dotted 1px #6E6E6E;
+    background: #2E2E2E;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.display-items {
+    
+    color: #FFF;
+}
+
+#clear, #backspace {
+    width: 33%;
+    color: red;
+}
+
+.number {
+    align-items: center;
+}
+
+.number:hover {
+    color: #0101DF;
+}
+
+.operator {
+    color: #FE9A2E;
+    align-items: center;
+}
+
+.operator:hover {
+    color: #DF3A01;
+}
