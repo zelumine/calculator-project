@@ -69,8 +69,8 @@ button:hover {
 }
 
 .display-items {
-    
     color: #FFF;
+    font-size: 24px;
 }
 
 #clear, #backspace {
