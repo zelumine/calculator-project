@@ -18,19 +18,15 @@ function multiply(arr) {
 function operate(operator, arr) {
     switch(operator) {
         case "+":
-            console.log(add(arr))
             return add(arr);
             break;
         case "-":
-            console.log(subtract(arr));
             return subtract(arr);
             break;
         case "x":
-            console.log(multiply(arr));
             return multiply(arr);
             break;
         case "/":
-            console.log(divide(arr));
             return divide(arr);
             break;
     }
@@ -39,6 +35,9 @@ function operate(operator, arr) {
 
 let calc = document.getElementById("calculator");
 let buttons = Array.from(document.getElementsByTagName("button"));
+let decimalButton = document.getElementById("decimal");
+let backspaceButton = document.getElementById("backspace");
+let clearButton = document.getElementById("clear");
 let displayArea = document.getElementById("display");
 let numbersAndOperators = [];
 let numbersArr = [];
@@ -55,24 +54,45 @@ buttons.forEach( (button) => {
 
 function displayFunc(e) {
     displayArea.textContent = "";
+
     if(e.target.className === "operator") {
         displayText.textContent += " " + e.target.textContent + " ";
         num = numbersArr.join("");
-        resultArr.push(parseInt(num, 10));
+        resultArr.push(+num);
+        decimalButton.addEventListener("click", displayFunc);
         numbersArr = [];
-        numbersAndOperators.push(parseInt(num, 10));
+        numbersAndOperators.push(+num);
         numbersAndOperators.push(e.target.textContent);
     } else if (e.target.className === "number") {
         numbersArr.push(e.target.textContent);
         displayText.textContent += e.target.textContent;
+        if(numbersArr.indexOf(".") !== -1) {
+            decimalButton.removeEventListener("click", displayFunc);
+        }
     }
-    display.appendChild(displayText);
+    displayArea.appendChild(displayText);
 }
 
 // For now it works when it's the same operator
-resultOperator.addEventListener("click", (e) => {
+resultOperator.addEventListener("click", () => {
     result = operate(numbersAndOperators[1], resultArr);
-    displayText.textContent = result;
+    if(Number.isInteger(result)) {
+        displayText.textContent = result;
+    } else {
+        displayText.textContent = result.toFixed(2);
+    }
 });
 
+backspaceButton.addEventListener("click", () => {
+    displayText.textContent = numbersAndOperators.join(" ");
+    numbersArr.splice(numbersArr.length-1, 1);
+    displayText.textContent += numbersArr;
+});
 
+clearButton.addEventListener("click", () => {
+    num = "";
+    numbersArr = [];
+    numbersAndOperators = [];
+    resultArr = [];
+    displayText.textContent = 0;
+});
